@@ -1,14 +1,20 @@
 <template>
-  <LandingPage msg="Welcome to Your Vue.js App"/>
+  <EmployeeNavBar/>
+  <WelcomeCard/>
+  <OverallGoalsCard/>
 </template>
 
 <script>
-import LandingPage from './components/LandingPage.vue'
+import OverallGoalsCard from './components/OverallGoalsCard.vue'
+import WelcomeCard from './components/WelcomeCard.vue'
+import EmployeeNavBar from './components/EmployeeNavBar.vue'
 
 export default {
   name: 'App',
   components: {
-    LandingPage
+    OverallGoalsCard,
+    WelcomeCard,
+    EmployeeNavBar,
   }
 }
 </script>
