@@ -1,19 +1,15 @@
 <template>
+  <router-view/>
   <EmployeeNavBar/>
-  <WelcomeCard/>
-  <OverallGoalsCard/>
 </template>
 
 <script>
-import OverallGoalsCard from './components/OverallGoalsCard.vue'
-import WelcomeCard from './components/WelcomeCard.vue'
 import EmployeeNavBar from './components/EmployeeNavBar.vue'
+
 
 export default {
   name: 'App',
   components: {
-    OverallGoalsCard,
-    WelcomeCard,
     EmployeeNavBar,
   }
 }

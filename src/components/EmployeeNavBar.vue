@@ -2,11 +2,12 @@
   <div class="EmployeeNavBar">
     <img v-bind:src="url" alt="Face"/>
     <h4>{{name}}</h4>
-    <a>Home</a>
-    <a>Assigned Goals</a>
-    <a>Archived Goals</a>
-    <a>Logout</a>
+    <router-link to="/home">Home</router-link>
+    <router-link to="/assignedgoals">Assigned Goals</router-link>
+    <router-link to="/archivedgoals">Archived Goals</router-link>
+    <router-link to="/logout">Logout</router-link>
   </div>
+      <!-- <router-view/> -->
 </template>
 
 <script>
