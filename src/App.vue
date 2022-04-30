@@ -1,18 +1,12 @@
 <template>
-  <router-view/>
-  <EmployeeNavBar/>
+<router-view/>
 </template>
 
 <script>
-import EmployeeNavBar from './components/EmployeeNavBar.vue'
-
-
 export default {
   name: 'App',
-  components: {
-    EmployeeNavBar,
   }
-}
+
 </script>
 
 <style>

@@ -1,13 +1,27 @@
 import { createWebHistory, createRouter } from "vue-router";
-import LandingPage from "@/views/LandingPage.vue";
+import HomePage from "@/views/HomePage.vue";
 import AssignedGoals from "@/views/AssignedGoals.vue";
 import ArchivedGoals from "@/views/ArchivedGoals.vue";
+import SignUp from "@/views/SignUp.vue";
+import LandingPage from "@/views/LandingPage.vue";
+import LoginPage from "@/views/LoginPage.vue";
 
 const routes = [
     {
-        path: "/home",
-        name: "LandingPage",
+        path: "/",
+        redirect: "/LandingPage",
+        name: "index",
         component: LandingPage,
+    },
+    {
+        path: "/LandingPage",
+        name: "landingPage",
+        component: LandingPage,
+    },
+    {
+        path: "/home",
+        name: "home",
+        component: HomePage,
     },
     {
         path: "/assignedgoals",
@@ -18,6 +32,22 @@ const routes = [
         path: "/archivedgoals",
         name: "archivedgoals",
         component: ArchivedGoals,
+    },
+    {
+        path: "/signUp",
+        name: "signUp",
+        component: SignUp,
+    },
+    {
+        path: "/login",
+        name: "login",
+        component: LoginPage,
+    },
+    {
+        path: "/logout",
+        redirect: "/",
+        name: "logout",
+        component: LandingPage,
     },
 ];
 

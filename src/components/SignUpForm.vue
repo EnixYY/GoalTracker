@@ -18,11 +18,7 @@
         </div>
         <div>
         <label>Password</label>
-        <input type="text" v-model="password">
-        </div>
-        <div>
-        <label>Confirm Password</label>
-        <input type="text" v-model="confirmPassword">
+        <input type="password" v-model="password">
         </div>
         <button>Sign up</button>
     </form>
@@ -39,19 +35,17 @@ export default {
             role:"",
             department:"",
             password:"",
-            confirmPassword:"",
         }
     },
     methods:{
     submitSignUpDetails(){
         this.$emit(
-            'sign-up', 
+            "sign-up", 
             this.name, 
             this.email, 
             this.role, 
             this.department, 
             this.password, 
-            this.confirmPassword,
         )
     }
     }

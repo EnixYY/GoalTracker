@@ -3,7 +3,8 @@
     <img v-bind:src="url" alt="Face"/>
     <h4>{{name}}</h4>
     <router-link to="/home">Home</router-link>
-    <router-link to="/assignedgoals">Assigned Goals</router-link>
+    <router-link to="/assignedgoals" v-if="isManager === false">Assigned Goals</router-link>
+    <router-link to="/creategoals" v-if="isManager">Create Goals</router-link>
     <router-link to="/archivedgoals">Archived Goals</router-link>
     <router-link to="/logout">Logout</router-link>
   </div>
@@ -17,6 +18,7 @@ export default {
     return{
       name:"Lau Yu Yao",
       url:"",
+      isManager:false,
     }
   }
 };
@@ -33,7 +35,7 @@ export default {
   justify-content: space-evenly;
   align-items: center;
   color: black;
-  position: sticky;
+  position: absolute;
   top: 0;
 }
 </style>

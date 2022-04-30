@@ -20,5 +20,6 @@ export default {
     .WelcomeCard {
         justify-content: center;
         border: 1px solid black;
+        width: 75vw;
         }
 </style>

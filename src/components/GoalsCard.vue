@@ -12,11 +12,14 @@ export default {
     name:"GoalsCard",
     data(){
         return{
-            goalTitle:"Quarterly Story points",
-            dueDate:"06 May 2022",
-            percentage: 0,
+
         }
     },
+    props:[
+        'goalTitle',
+        'percentage',
+        'dueDate'
+    ],
     methods:{
 
     }
