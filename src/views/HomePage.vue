@@ -1,8 +1,12 @@
 <template>
     <div id="HomePageHolder">
+        <div>
         <SideNavbar/>
+        </div>
+        <div id="contentHolder">
         <WelcomeCard/>
         <OverallGoalsCard/>
+        </div>
     </div>
 </template>;
 
@@ -24,6 +28,11 @@ export default {
 <style>
 #HomePageHolder {
     display: flex;
+    background-color: white;
+}
+#contentHolder{
+    display: flex;
     flex-direction: column;
+    padding: 18px;
 }
 </style>

@@ -18,8 +18,10 @@ export default {
 
 <style>
     .WelcomeCard {
-        justify-content: center;
+        margin-top: 100px;
         border: 1px solid black;
-        width: 75vw;
+        border-radius: 10px;
+        width: 70vw;
+        background-color: turquoise;
         }
 </style>

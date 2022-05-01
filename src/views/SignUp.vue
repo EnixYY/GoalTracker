@@ -1,15 +1,23 @@
 <template>
-    <SignUpForm @sign-up="signUp"/> 
+    <div>
+        <TopNavBar />
+        </div>
+    <div id="mainHolder">
+        <h1>Goäl Träcker</h1>
+            <SignUpForm @sign-up="signUp"/> 
+    </div>
 </template>
 
 <script>
 import SignUpForm from '../components/SignUpForm.vue'
+import TopNavBar from '../components/TopNavBar.vue'
 import router from '../router'
 
 export default {
     name: "SignUp",
     components: {
     SignUpForm,
+    TopNavBar
 },
 data(){
     return{

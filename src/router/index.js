@@ -5,6 +5,7 @@ import ArchivedGoals from "@/views/ArchivedGoals.vue";
 import SignUp from "@/views/SignUp.vue";
 import LandingPage from "@/views/LandingPage.vue";
 import LoginPage from "@/views/LoginPage.vue";
+import CreateGoals from "@/views/CreateGoals.vue";
 
 const routes = [
     {
@@ -42,6 +43,11 @@ const routes = [
         path: "/login",
         name: "login",
         component: LoginPage,
+    },
+    {
+        path: "/createGoals",
+        name: "createGoals",
+        component: CreateGoals,
     },
     {
         path: "/logout",

@@ -1,7 +1,7 @@
 <template>
   <div class="TopNavBar">
-    <router-link to="/SignUp">SignUp</router-link>
-    <router-link to="/Login">Login</router-link>
+    <router-link class="routerLink" to="/SignUp">SignUp</router-link>
+    <router-link class="routerLink" to="/Login">Login</router-link>
   </div>
 </template>
 
@@ -16,11 +16,11 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .TopNavBar {
-  height: 10vh;
+  height: 8vh;
   width: 100vw;
-  background-color: salmon;
+  background-color: turquoise;
   display: flex;
   margin: 0;
   justify-content: space-evenly;
@@ -28,5 +28,11 @@ export default {
   color: black;
   position: absolute;
   top: 0;
+}
+.routerLink{
+  color: white;
+}
+.routerLink:hover{
+  color: black;
 }
 </style>

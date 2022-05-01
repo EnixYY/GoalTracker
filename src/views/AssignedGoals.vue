@@ -1,12 +1,18 @@
 <template>
-    <SideNavBar/>
-    <GoalsCard 
-    v-for="goal in goals" 
-    :key="goal.goalTitle" 
-    :goal-title="goal.goalTitle"
-    :due-date="goal.dueDate"
-    :percentage="goal.percentage"
-    />
+<div id="assignedPageHolder">
+    <div>
+        <SideNavBar/>
+    </div>
+    <div id="goalsHolder">
+        <GoalsCard 
+        v-for="goal in goals" 
+        :key="goal.goalTitle" 
+        :goal-title="goal.goalTitle"
+        :due-date="goal.dueDate"
+        :percentage="goal.percentage"
+        />
+    </div>
+</div>
 </template>;
 
 <script>
@@ -40,3 +46,15 @@ export default {
 }
 </script>
 
+<style scoped>
+#assignedPageHolder {
+    display: flex;
+    background-color: white;
+}
+#goalsHolder{
+    display: flex;
+    justify-content: space-evenly;
+    height: 100vh;
+    width: 75vw;
+}
+</style>
