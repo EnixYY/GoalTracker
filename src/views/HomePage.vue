@@ -1,7 +1,7 @@
 <template>
     <div id="HomePageHolder">
         <div>
-        <SideNavbar :is-manager="isManager" :user-name="userName"/>
+        <SideNavBar :is-manager="isManager" :user-name="userName"/>
         </div>
         <div id="contentHolder">
         <WelcomeCard :user-name="userName"/>
@@ -18,7 +18,7 @@
 <script>
 import WelcomeCard from "../components/WelcomeCard.vue"
 import OverallGoalsCard from "../components/OverallGoalsCard.vue"
-import SideNavbar from "../components/SideNavBar.vue"
+import SideNavBar from "../components/SideNavBar.vue"
 import axios from "axios"
 import router from "../router"
 
@@ -27,7 +27,7 @@ export default {
     components:{
         WelcomeCard,
         OverallGoalsCard,
-        SideNavbar,
+        SideNavBar,
     },
     data(){
         return{
