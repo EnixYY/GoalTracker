@@ -6,7 +6,7 @@
     <router-link class="routerLink" to="/assignedgoals" v-if="isManager === false">Assigned Goals</router-link>
     <router-link class="routerLink" to="/creategoals" v-if="isManager">Create Goals</router-link>
     <router-link class="routerLink" to="/archivedgoals">Archived Goals</router-link>
-    <router-link class="routerLink" to="/logout">Logout</router-link>
+    <router-link @click="clearLocalstorage" class="routerLink" to="/logout">Logout</router-link>
   </div>
 </template>
 
@@ -17,7 +17,12 @@ export default {
     return{
       name:"Lau Yu Yao",
       url:"",
-      isManager:true,
+      isManager:false,
+    }
+  },
+  methods:{
+    clearLocalstorage(){
+      localStorage.clear();
     }
   }
 };

@@ -27,7 +27,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .OverallGoalsCard {
         margin-top: 100px;
         padding-bottom: 15px;
@@ -46,6 +46,7 @@ button{
     color: black;
 }
 button:hover{
-    color: turquoise;
+    color: white;
+    background-color: turquoise;
 }
 </style>

@@ -1,10 +1,12 @@
 <template>
+<div id="OverallHolder">
 <div>
 <TopNavBar />
 </div>
 <div id="mainHolder">
   <h1>Goäl Träcker</h1>
   <img src="https://miro.medium.com/max/903/1*Vme2Cdne8NJhbaGuRc4rww.jpeg"/>
+</div>
 </div>
 </template>
 
@@ -32,6 +34,7 @@ height: 70vh;
 #mainHolder{
   display: flex;
   flex-direction: column;
+  margin-top: 60px;
 }
 </style>
 

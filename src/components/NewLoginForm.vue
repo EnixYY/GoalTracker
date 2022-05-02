@@ -41,6 +41,12 @@ export default {
     display: flex;
     flex-direction: column;
     width: 100vw;
+    background-color: turquoise;
+    width: 60vw;
+    height: 30vh;
+    justify-content: center;
+    border-radius: 10px;
+    margin-left: 150px;
 }
 .individual{
     display:flex;
@@ -52,12 +58,13 @@ button{
     padding: 6px;
     text-align: center;
     border-radius: 10px;
-    background-color: turquoise;
+    background-color: white;
     border: 1px solid black;
-    color: white;
+    color: black;
 }
 button:hover{
-    color: black;
+    color: white;
+    background-color: turquoise;
 }
 label{
     font-weight: bold;

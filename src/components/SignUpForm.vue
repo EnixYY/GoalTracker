@@ -10,18 +10,29 @@
         </div>
         <div class="individual">
         <label>Role</label>
-        <input type="text" v-model="role">
+        <select v-model="role">
+            <option value="Manager">Manager</option>
+            <option value="Employee">Employee</option>
+        </select>
         </div>
         <div class="individual">
         <label>Department</label>
-        <input type="text" v-model="department">
+        <select v-model="department">
+            <option value="IT">IT</option>
+            <option value="Sales">Sales</option>
+            <option value="HR">HR</option>
+            <option value="Marketing">Marketing</option>
+        </select>
         </div>
         <div class="individual">
-        <label>Password</label>
-        <input type="password" v-model="password">
+            <label>Password</label>
+            <input type="password" v-model="password">
         </div>
         <div class="individual">
-        <button>Sign up</button>
+            <label v-if="errorChecker">Please create again as there is an error while creating</label>
+        </div>
+        <div class="individual">
+            <button>Sign up</button>
         </div>
     </form>
 </template>
@@ -30,6 +41,7 @@
 export default {
     name:"SignUpForm",
     emits:["sign-up"],
+    props:['errorChecker'],
     data(){
         return{
             name:"",
@@ -59,6 +71,12 @@ export default {
     display: flex;
     flex-direction: column;
     width: 100vw;
+    background-color: turquoise;
+    width: 70vw;
+    height: 40vh;
+    justify-content: center;
+    border-radius: 10px;
+    margin-left: 115px;
 }
 .individual{
     display:flex;
@@ -70,12 +88,13 @@ button{
     padding: 6px;
     text-align: center;
     border-radius: 10px;
-    background-color: turquoise;
+    background-color: white;
     border: 1px solid black;
-    color: white;
+    color: black;
 }
 button:hover{
-    color: black;
+    color: white;
+    background-color: turquoise;
 }
 label{
     font-weight: bold;

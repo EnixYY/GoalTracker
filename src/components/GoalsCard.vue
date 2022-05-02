@@ -27,7 +27,7 @@ export default {
 </script>
 
 <style>
-    .goalcard {
+.goalcard {
         background-color: turquoise;
         justify-content: center;
         border: 1px solid black;
@@ -36,5 +36,18 @@ export default {
         width: 200px;
         height: 200px;
         margin-top: 80px
-        }
+}
+button{
+    width: 80px;
+    padding: 6px;
+    text-align: center;
+    border-radius: 10px;
+    background-color: white;
+    border: 1px solid black;
+    color: black;
+}
+button:hover{
+    color: white;
+    background-color: turquoise;
+}
 </style>
