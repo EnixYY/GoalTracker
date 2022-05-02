@@ -1,7 +1,7 @@
 <template>
     <div class="WelcomeCard">
         <h1>Welcome to Goals Tracker</h1>
-        <h2>{{name}}</h2>
+        <h2>{{userName}}</h2>
     </div>
 </template>
 
@@ -10,9 +10,9 @@ export default {
     name:"WelcomeCard",
     data(){
         return{
-        name: "Lau Yu Yao",
         }
-    }
+    },
+    props:["userName"]
 }
 </script>
 

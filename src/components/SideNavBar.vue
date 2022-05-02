@@ -1,7 +1,7 @@
 <template>
   <div class="EmployeeNavBar">
     <img src="https://cdn.dribbble.com/users/4226377/screenshots/14109330/cute_profile_1x.png" alt="Face"/>
-    <h2>{{name}}</h2>
+    <h2>{{userName}}</h2>
     <router-link class="routerLink" to="/home">Home</router-link>
     <router-link class="routerLink" to="/assignedgoals" v-if="isManager === false">Assigned Goals</router-link>
     <router-link class="routerLink" to="/creategoals" v-if="isManager">Create Goals</router-link>
@@ -15,11 +15,12 @@ export default {
   name: "EmployeeNavBar",
   data(){
     return{
-      name:"Lau Yu Yao",
-      url:"",
-      isManager:false,
     }
   },
+  props:[
+    'isManager',
+    'userName',
+  ],
   methods:{
     clearLocalstorage(){
       localStorage.clear();
