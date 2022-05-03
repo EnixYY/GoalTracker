@@ -22,6 +22,8 @@ import OverallGoalsCard from "../components/OverallGoalsCard.vue"
 import SideNavBar from "../components/SideNavBar.vue"
 import axios from "axios"
 import router from "../router"
+import jwt_decode from "jwt-decode";
+
 
 export default {
     name:"HomePage",
@@ -38,12 +40,20 @@ export default {
             userName: "",
             userDepartment: "",
             departmentContributedValue: [],
+            userId: "",
         }
     },
     created(){
+        this.decodeToken()
         this.getUser()
     },
     methods:{
+        decodeToken(){
+            const that = this;
+            const token = localStorage.accessToken
+            const decode = jwt_decode(token)
+            that.userId = decode.user_id
+        },
         checkUser(){
             if(this.userData[0].email !== localStorage.email && !localStorage.accessToken){
                 router.push({name: 'home'})
@@ -71,7 +81,7 @@ export default {
             const that = this;
             const config = {
             method: 'get',
-            url: `http://127.0.0.1:8000/account/get-account/${localStorage.email}`,
+            url: `http://127.0.0.1:8000/account/get-account/${that.userId}`,
             headers: { }
             };
 
