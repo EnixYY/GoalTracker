@@ -4,7 +4,6 @@
         <h2 v-if="isManager">{{department}}</h2>
         <div v-if="isManager">
             <h4 v-for="goal in this.departmentGoalsData" :key="goal.id">{{goal.name}} {{goal.totalUserContribution}}/{{goal.value}} Due on {{goal.endDate}}</h4>
-            <h4 v-for="value in this.userInput" :key="value.id">{{value}}</h4>
             <button @click="viewAll">View All</button>
         </div>
         <div v-if="isManager === false">
@@ -32,7 +31,11 @@ export default {
     ],
     methods:{
         viewAll(){
-            router.push({ name: "assignedgoals"})
+            if(this.isManager){
+                router.push({name: "managerViewAllDepartmentGoals"})
+            }else if(this.isManager === false){
+                router.push({ name: "assignedgoals"})
+            }
         }
     }
 }

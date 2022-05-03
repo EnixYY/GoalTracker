@@ -1,9 +1,9 @@
 <template>
     <div class="goalcard">
         <h4>{{goalTitle}}</h4>
-        <h4>{{percentage}}%</h4>
-        <h4>{{dueDate}}</h4>
-        <button>Edit</button>
+        <h4>{{userInput}}/{{fullValue}}</h4>
+        <h4>Due on {{dueDate}}</h4>
+        <button v-if="isManager === false">Edit</button>
     </div>
 </template>
 
@@ -17,8 +17,9 @@ export default {
     },
     props:[
         'goalTitle',
-        'percentage',
-        'dueDate'
+        'fullValue',
+        'dueDate',
+        'userInput'
     ],
     methods:{
 

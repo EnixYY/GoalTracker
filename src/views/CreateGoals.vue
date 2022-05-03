@@ -44,16 +44,6 @@ methods:{
         }
         },
     createGoal(goal, endDate, value, allocation){
-        // const createNewGoal = {
-            // id: name,
-        //     goal: goal,
-        //     endDate: endDate,
-        //     value: value,
-        //     allocation: allocation,
-        //     nameOfEmployee: nameOfEmployee,
-        //     percentage: percentage,
-        // }
-        // this.newGoal.push(createNewGoal);
         const that = this;
         const data = JSON.stringify({
             "name": goal,

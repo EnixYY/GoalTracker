@@ -10,7 +10,6 @@
         :user-name="userName" 
         :department="userDepartment"
         :department-goals-data="departmentGoalsData[0]"
-        :user-input="departmentContributedValue"
         />
         </div>
     </div>
@@ -39,7 +38,6 @@ export default {
             isManager: null,
             userName: "",
             userDepartment: "",
-            departmentContributedValue: [],
             userId: "",
         }
     },
@@ -162,7 +160,6 @@ export default {
                 .catch(function (error) {
                 console.log(error);
                 });                        }
-                console.log(that.departmentContributedValue);
                 }
                 )
                 .catch(function (error) {

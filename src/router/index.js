@@ -6,6 +6,7 @@ import SignUp from "@/views/SignUp.vue";
 import LandingPage from "@/views/LandingPage.vue";
 import LoginPage from "@/views/LoginPage.vue";
 import CreateGoals from "@/views/CreateGoals.vue";
+import ManagerViewAllDepartmentGoals from "@/views/ManagerViewAllDepartmentGoals.vue";
 
 const routes = [
     {
@@ -48,6 +49,11 @@ const routes = [
         path: "/createGoals",
         name: "createGoals",
         component: CreateGoals,
+    },
+    {
+        path: "/managerViewAllDepartmentGoals",
+        name: "managerViewAllDepartmentGoals",
+        component: ManagerViewAllDepartmentGoals,
     },
     {
         path: "/logout",
