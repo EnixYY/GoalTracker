@@ -16,19 +16,19 @@
         <label>Allocation</label>
         <select v-model="allocation">
             <option value="Equally">Equally</option>
-            <option value="Percentage">Percentage</option>
+            <option value="Assigned">Assigned</option>
         </select>
         </div>
         <div class="individual">
-        <label v-if="isPercentage">Name of Employee</label>
-        <input v-if="isPercentage" type="text" v-model="nameOfEmployee">
+        <label v-if="isAssigned">Name of Employee</label>
+        <input v-if="isAssigned" type="text" v-model="nameOfEmployee">
         </div>
         <div class="individual">
-        <label v-if="isPercentage">Percentage</label>
-        <input v-if="isPercentage" type="number" v-model="percentage">
+        <label v-if="isAssigned">Percentage</label>
+        <input v-if="isAssigned" type="number" v-model="percentage">
         </div>
         <div class="individual">
-        <button v-if="isPercentage">Add more Employee</button>
+        <button v-if="isAssigned">Add more Employee</button>
         </div>
         <div class="individual">
         <button>Create Goal</button>
@@ -42,7 +42,7 @@ export default {
     emits:["create-goal"],
     data(){
         return{
-            isPercentage:false,
+            isAssigned:false,
             goal:"",
             endDate:"",
             value:"",
