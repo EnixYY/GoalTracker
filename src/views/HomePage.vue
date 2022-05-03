@@ -10,6 +10,7 @@
         :user-name="userName" 
         :department="userDepartment"
         :department-goals-data="departmentGoalsData[0]"
+        :user-input="departmentContributedValue"
         />
         </div>
     </div>
@@ -36,6 +37,7 @@ export default {
             isManager: null,
             userName: "",
             userDepartment: "",
+            departmentContributedValue: [],
         }
     },
     created(){
@@ -59,6 +61,7 @@ export default {
             .then(function (response) {
             that.departmentGoalsData.push(response.data)
             console.log(that.departmentGoalsData[0]);
+            that.getDepartmentContributedValue()
             })
             .catch(function (error) {
             console.log(error);
@@ -83,12 +86,80 @@ export default {
             that.getDeparment()
             if (response.data.role === "Manager"){
             that.isManager = true
+            }else{
+                that.isManager = false
             }
             })
             .catch(function (error) {
             console.log(error);
             });
         },
+        getDepartmentContributedValue(){
+            this.departmentGoalsData[0].map((data, i)=>{
+                const that = this;
+                console.log(that.departmentGoalsData[0][i].id)
+                const config = {
+                method: 'get',
+                url: `http://127.0.0.1:8000/api/get-progress/${that.departmentGoalsData[0][i].id}/`,
+                headers: { }
+                };
+
+                axios(config)
+                .then(function (response) {
+                if(response.data.length !== 0){
+                        const totalValueOfUser = response.data.reduce((previous, current)=>{
+                            return previous.employeeInput + current.employeeInput
+                        }
+                    )
+                const data = JSON.stringify({
+                    "totalUserContribution": totalValueOfUser  
+                });
+
+                const config = {
+                method: 'patch',
+                url: `http://127.0.0.1:8000/api/update-user-input/${that.departmentGoalsData[0][i].id}/`,
+                headers: { 
+                    'Content-Type': 'application/json'
+                },
+                data : data
+                };
+
+                axios(config)
+                .then(function (response) {
+                console.log(response.data);
+                })
+                .catch(function (error) {
+                console.log(error);
+                });               
+                }else{
+                const data = JSON.stringify({
+                    "totalUserContribution": 0  
+                });
+
+                const config = {
+                method: 'patch',
+                url: `http://127.0.0.1:8000/api/update-user-input/${that.departmentGoalsData[0][i].id}/`,
+                headers: { 
+                    'Content-Type': 'application/json'
+                },
+                data : data
+                };
+
+                axios(config)
+                .then(function (response) {
+                console.log(response.data);
+                })
+                .catch(function (error) {
+                console.log(error);
+                });                        }
+                console.log(that.departmentContributedValue);
+                }
+                )
+                .catch(function (error) {
+                console.log(error);
+                });
+            })
+        }
     },
 }
 </script>

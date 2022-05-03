@@ -13,6 +13,7 @@
 import CreateGoalForm from '../components/CreateGoalForm.vue'
 import SideNavBar from '../components/SideNavBar.vue'
 import router from '../router'
+import jwt_decode from "jwt-decode";
 
 export default {
     name: "CreateGoals",
@@ -24,6 +25,9 @@ data(){
     return{
         newGoal:[],
     }
+},
+created(){
+    this.decodeToken()
 },
 methods:{
     createGoal(goal, endDate, value, allocation, nameOfEmployee, percentage){
@@ -39,6 +43,12 @@ methods:{
         this.newGoal.push(createNewGoal);
         console.log(this.newGoal)
         router.push({name: 'home'})
+    },
+    decodeToken(){
+        const token = localStorage.accessToken
+        const decode = jwt_decode(token)
+
+        console.log(decode)
     }
 }
 }

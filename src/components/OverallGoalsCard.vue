@@ -3,7 +3,8 @@
         <h2 v-if="isManager === false">{{userName}}</h2>
         <h2 v-if="isManager">{{department}}</h2>
         <div v-if="isManager">
-            <h4 v-for="goal in this.departmentGoalsData" :key="goal.id">{{goal.name}} 0/{{goal.value}} Due on {{goal.endDate}}</h4>
+            <h4 v-for="goal in this.departmentGoalsData" :key="goal.id">{{goal.name}} {{goal.totalUserContribution}}/{{goal.value}} Due on {{goal.endDate}}</h4>
+            <h4 v-for="value in this.userInput" :key="value.id">{{value}}</h4>
             <button @click="viewAll">View All</button>
         </div>
         <div v-if="isManager === false">
@@ -26,7 +27,8 @@ export default {
         "userName",
         "department",
         "isManager",
-        "departmentGoalsData"
+        "departmentGoalsData",
+        "userInput"
     ],
     methods:{
         viewAll(){
