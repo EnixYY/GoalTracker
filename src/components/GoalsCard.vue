@@ -1,28 +1,69 @@
 <template>
-    <div class="goalcard">
+    <div class="goalcard" @submit.prevent="updateUserNewInput">
         <h4>{{goalTitle}}</h4>
-        <h4>{{userInput}}/{{fullValue}}</h4>
+        <h4>{{userInputLabel}}/{{fullValue}}</h4>
         <h4>Due on {{dueDate}}</h4>
-        <button v-if="isManager === false">Edit</button>
+        <button @click="setIdEdit" v-if="isManager === false && isEdit === false">Edit</button>
+        <form v-if="isManager === false && isEdit" @submit.prevent="updateUserNewInput">
+        <input v-model="userNewInput"/>
+        <button>Add Progress</button>
+        </form>
     </div>
 </template>
 
 <script>
+import axios from "axios"
+
 export default {
     name:"GoalsCard",
     data(){
         return{
-
+            isEdit: false,
+            userInputLabel: this.userInput,
+            userNewInput: "",
         }
     },
     props:[
         'goalTitle',
         'fullValue',
         'dueDate',
-        'userInput'
+        'userInput',
+        'isManager',
+        'departmentGoalId',
+        'userIdForProgress',
     ],
     methods:{
+        setIdEdit(){
+            this.isEdit = true
+        },
+        updateUserNewInput(){
+            const that = this;
+            const updatedUserinput = parseInt(that.userNewInput) + parseInt(this.userInputLabel)
+            const data = JSON.stringify({
+                "employeeInput": updatedUserinput
+                });
 
+                var config = {
+                method: 'patch',
+                url: `http://127.0.0.1:8000/api/update-progress/${that.departmentGoalId}/${that.userIdForProgress}/`,
+                headers: { 
+                    'Content-Type': 'application/json'
+                },
+                data : data
+                };
+
+                axios(config)
+                .then(function (response) {
+                console.log(response.data)
+                that.userInputLabel = updatedUserinput
+                that.isEdit = false
+                that.userNewInput = ""
+                console.log(that.userInputLabel);
+                })
+                .catch(function (error) {
+                console.log(error);
+                });
+        }
     }
 }
 </script>
@@ -35,11 +76,12 @@ export default {
         border-radius: 10px;
         padding: 10px;
         width: 200px;
-        height: 200px;
+        height: 210px;
         margin-top: 80px
 }
 button{
-    width: 80px;
+    margin-top: 10px;
+    width: 100px;
     padding: 6px;
     text-align: center;
     border-radius: 10px;
