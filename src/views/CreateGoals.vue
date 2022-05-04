@@ -31,6 +31,7 @@ data(){
         userDepartment:"",
         numberOfEmployeeInDepartment:"",
         userDetailsForEmployeeInDepartment:[],
+        departmentGoalNameForProgressUpdate:"",
     }
 },
 created(){
@@ -53,6 +54,7 @@ methods:{
             "number_of_employee": this.numberOfEmployeeInDepartment,
             "allocation_type": allocation
             });
+            that.departmentGoalNameForProgressUpdate = goal
 
             const config = {
             method: 'put',
@@ -71,7 +73,8 @@ methods:{
                 const progressData = JSON.stringify({
                     "individualValue": Math.ceil(individualAmount),
                     "departmentGoalsId": response.data.id,
-                    "userId": that.userDetailsForEmployeeInDepartment[0][i].id
+                    "userId": that.userDetailsForEmployeeInDepartment[0][i].id,
+                    "departmentGoalName": that.departmentGoalNameForProgressUpdate
                     });
                     const config = {
                     method: 'put',
