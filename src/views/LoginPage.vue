@@ -31,11 +31,10 @@ methods:{
             email: email,
             password: password,
         }
-        this.loginData.push(login);
 
         const data = {
-        "email": this.loginData[0].email,
-        "password": this.loginData[0].password,
+        "email": login.email,
+        "password": login.password,
         };
 
         const config = {
