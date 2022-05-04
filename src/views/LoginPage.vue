@@ -33,12 +33,12 @@ methods:{
         }
         this.loginData.push(login);
 
-        var data = {
+        const data = {
         "email": this.loginData[0].email,
         "password": this.loginData[0].password,
         };
 
-        var config = {
+        const config = {
         method: 'post',
         url: 'http://127.0.0.1:8000/jwt_api/token/',
         data : data

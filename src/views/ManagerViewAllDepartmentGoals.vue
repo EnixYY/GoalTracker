@@ -11,6 +11,7 @@
         :due-date="goal.endDate"
         :full-value="goal.value"
         :user-input="goal.totalUserContribution"
+        :is-manager="isManager" 
         />
     </div>
 </div>
