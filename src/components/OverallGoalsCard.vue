@@ -7,7 +7,7 @@
             <button @click="viewAll">View All</button>
         </div>
         <div v-if="isManager === false">
-            <h4>Not done</h4>
+            <h4 v-for="progress in this.userProgressData" :key="progress.id">{{progress.departmentGoalName}} {{progress.employeeInput}}/{{progress.individualValue}} Due on {{progress.endDate}}</h4>
             <button @click="viewAll">View All</button>
         </div>
     </div>
@@ -27,7 +27,8 @@ export default {
         "department",
         "isManager",
         "departmentGoalsData",
-        "userInput"
+        "userInput",
+        "userProgressData",
     ],
     methods:{
         viewAll(){

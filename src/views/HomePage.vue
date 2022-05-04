@@ -10,6 +10,7 @@
         :user-name="userName" 
         :department="userDepartment"
         :department-goals-data="departmentGoalsData[0]"
+        :user-progress-data="employeeProgressData[0]"
         />
         </div>
     </div>
@@ -39,6 +40,7 @@ export default {
             userName: "",
             userDepartment: "",
             userId: "",
+            employeeProgressData: [],
         }
     },
     created(){
@@ -96,6 +98,7 @@ export default {
             that.isManager = true
             }else{
                 that.isManager = false
+                that.getEmployeeProgress()
             }
             })
             .catch(function (error) {
@@ -166,6 +169,23 @@ export default {
                 console.log(error);
                 });
             })
+        },
+        getEmployeeProgress(){
+            const that = this;
+            const config = {
+                method: 'get',
+                url: `http://127.0.0.1:8000/api/get-progress-by-userid/${that.userId}/`,
+                headers: { }
+                };
+
+                axios(config)
+                .then(function (response) {
+                that.employeeProgressData.push(response.data)
+                console.log(that.employeeProgressData[0]);
+                })
+                .catch(function (error) {
+                console.log(error);
+                });
         }
     },
 }
