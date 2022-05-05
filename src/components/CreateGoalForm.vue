@@ -14,21 +14,17 @@
         </div>
         <div class="individual">
         <label>Allocation</label>
-        <select v-model="allocation">
+        <select v-model="allocation" @change="setAllocation($event)">
             <option value="Equally">Equally</option>
             <option value="Assigned">Assigned</option>
         </select>
         </div>
-        <div class="individual">
-        <label v-if="isAssigned">Name of Employee</label>
-        <input v-if="isAssigned" type="text" v-model="nameOfEmployee">
+        <div v-if="isAssigned">
+        <div v-for="(details, index) in this.userDetails" :key="details.id" class="individual">
+        <label>{{details.name}}</label>
+        <input type="number" v-model="percentage[index]"/>
+        <label>%</label>
         </div>
-        <div class="individual">
-        <label v-if="isAssigned">Percentage</label>
-        <input v-if="isAssigned" type="number" v-model="percentage">
-        </div>
-        <div class="individual">
-        <button v-if="isAssigned">Add more Employee</button>
         </div>
         <div class="individual">
         <button>Create Goal</button>
@@ -47,10 +43,11 @@ export default {
             endDate:"",
             value:"",
             allocation:"",
-            nameOfEmployee:"",
-            percentage:"",
+            percentage:[],
+
         }
     },
+    props:["userDetails"],
     methods:{
     submitGoalsDetails(){
         this.$emit(
@@ -59,10 +56,17 @@ export default {
             this.endDate, 
             this.value, 
             this.allocation, 
-            this.nameOfEmployee, 
             this.percentage,
+            this.isAssigned,
         )
-    }
+    },
+    setAllocation(event){
+        this.allocation = event.target.value
+        if(this.allocation === "Assigned"){
+            this.isAssigned = true
+            console.log(this.isAssigned)
+        }
+    },
     }
 }
 </script>

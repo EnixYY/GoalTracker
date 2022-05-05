@@ -4,7 +4,7 @@
         <SideNavBar :is-manager="isManager" :user-name="userName"/>
         </div>
     <div id="mainHolder">
-            <CreateGoalForm @create-goal="createGoal"/> 
+            <CreateGoalForm @create-goal="createGoal" :user-details="userDetailsForEmployeeInDepartment[0]"/> 
     </div>
 </div>
 </template>
@@ -44,8 +44,9 @@ methods:{
             router.push({name: 'home'})
         }
         },
-    createGoal(goal, endDate, value, allocation){
+    createGoal(goal, endDate, value, allocation, percentage, isAssigned){
         const that = this;
+        console.log(isAssigned)
         const data = JSON.stringify({
             "name": goal,
             "value": value,
@@ -65,9 +66,9 @@ methods:{
             },
             data : data
             };
-
             axios(config)
             .then(function (response) {
+            if(isAssigned === false){
             console.log(response.data);
             that.userDetailsForEmployeeInDepartment[0].map((data, i)=>{
                 const individualAmount = response.data.value/that.numberOfEmployeeInDepartment
@@ -96,6 +97,36 @@ methods:{
                     console.log(error);
                     });
             })
+            }else if(isAssigned === true){
+            console.log(response.data);
+                that.userDetailsForEmployeeInDepartment[0].map((data, i)=>{
+                    const individualAmount = percentage[i]*response.data.value/100
+                    const progressData = JSON.stringify({
+                        "individualValue": Math.ceil(individualAmount),
+                        "departmentGoalsId": response.data.id,
+                        "userId": that.userDetailsForEmployeeInDepartment[0][i].id,
+                        "departmentGoalName": that.departmentGoalNameForProgressUpdate,
+                        "endDate": endDate,
+                        });
+                        const config = {
+                        method: 'put',
+                        url: 'http://127.0.0.1:8000/api/create-progress/',
+                        headers: { 
+                            'Content-Type': 'application/json'
+                        },
+                        data : progressData
+                        };
+
+                        axios(config)
+                        .then(function (response) {
+                        console.log(response.data)
+                        router.push({name: 'home'})
+                        })
+                        .catch(function (error) {
+                        console.log(error);
+                        });
+            })
+            }
             })
             .catch(function (error) {
             console.log(error);
