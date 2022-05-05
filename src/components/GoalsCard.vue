@@ -76,7 +76,7 @@ export default {
         border-radius: 10px;
         padding: 10px;
         width: 200px;
-        height: 210px;
+        height: 33vh;
         margin-top: 80px
 }
 button{
