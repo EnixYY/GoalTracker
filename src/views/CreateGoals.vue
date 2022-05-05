@@ -64,7 +64,6 @@ methods:{
             this.errorMessage = "Please select the Allocation Type."
         }else{
         const that = this;
-        console.log(isAssigned)
         const data = JSON.stringify({
             "name": goal,
             "value": value,
@@ -87,7 +86,6 @@ methods:{
             axios(config)
             .then(function (response) {
             if(isAssigned === false){
-            console.log(response.data);
             that.userDetailsForEmployeeInDepartment[0].map((data, i)=>{
                 const individualAmount = response.data.value/that.numberOfEmployeeInDepartment
                 const progressData = JSON.stringify({
@@ -108,15 +106,14 @@ methods:{
 
                     axios(config)
                     .then(function (response) {
-                    console.log(response.data)
                     router.push({name: 'home'})
+                    return response.data
                     })
                     .catch(function (error) {
                     console.log(error);
                     });
             })
             }else if(isAssigned === true){
-            console.log(response.data);
                 that.userDetailsForEmployeeInDepartment[0].map((data, i)=>{
                     const individualAmount = percentage[i]*response.data.value/100
                     const progressData = JSON.stringify({
@@ -137,8 +134,8 @@ methods:{
 
                         axios(config)
                         .then(function (response) {
-                        console.log(response.data)
                         router.push({name: 'home'})
+                        return response.data
                         })
                         .catch(function (error) {
                         console.log(error);
@@ -168,8 +165,6 @@ methods:{
             axios(config)
             .then(function (response) {
             that.userData.push(response.data)
-            console.log(that.userData)
-            console.log(response.data);
             that.checkUser()
             that.userName = response.data.name
             that.userDepartment = response.data.department
@@ -195,7 +190,6 @@ methods:{
                 .then(function (response) {
                 that.numberOfEmployeeInDepartment = response.data.length;
                 that.userDetailsForEmployeeInDepartment.push(response.data)
-                console.log(that.userDetailsForEmployeeInDepartment[0])
                 })
                 .catch(function (error) {
                 console.log(error);

@@ -50,11 +50,10 @@ export default {
 
                 axios(config)
                 .then(function (response) {
-                console.log(response.data)
                 that.userInputLabel = updatedUserinput
                 that.isEdit = false
                 that.userNewInput = ""
-                console.log(that.userInputLabel);
+                return response.data
                 })
                 .catch(function (error) {
                 console.log(error);

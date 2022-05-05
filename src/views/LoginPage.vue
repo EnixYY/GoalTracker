@@ -50,7 +50,6 @@ methods:{
 
         axios(config)
         .then(function (response) {
-        console.log(response.data.access);
         localStorage.accessToken = response.data.access;
         localStorage.email = email
         that.isError = false

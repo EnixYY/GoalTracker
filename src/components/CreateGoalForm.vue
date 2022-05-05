@@ -64,10 +64,8 @@ export default {
         this.allocation = event.target.value
         if(this.allocation === "Assigned"){
             this.isAssigned = true
-            console.log(this.isAssigned)
         }else if(this.allocation === "Equally"){
             this.isAssigned = false
-            console.log(this.isAssigned)
         }
     },
     }

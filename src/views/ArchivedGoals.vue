@@ -92,7 +92,6 @@ export default {
                 const filteredData = progressData.filter((progress)=> { 
                 return new Date(progress.endDate).getTime() <= timeNow})
                 that.employeeProgressData.push(filteredData)
-                console.log(filteredData)
                 })
                 .catch(function (error) {
                 console.log(error);

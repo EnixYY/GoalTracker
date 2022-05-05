@@ -63,8 +63,6 @@ export default {
             axios(config)
             .then(function (response) {
             that.userData.push(response.data)
-            console.log(that.userData);
-            console.log(response.data);
             that.checkUser()
             that.userName = response.data.name
             that.userDepartment = response.data.department
@@ -99,7 +97,6 @@ export default {
             const filteredData = DepartmentGoalsData.filter((goal)=> { 
             return new Date(goal.endDate).getTime() <= timeNow})
             that.departmentGoalsData.push(filteredData)
-            console.log(that.departmentGoalsData[0]);
             })
             .catch(function (error) {
             console.log(error);

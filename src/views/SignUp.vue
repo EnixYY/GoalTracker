@@ -81,7 +81,7 @@ methods:{
         axios(config)
         .then(function (response) {
         router.push({name: 'login'})
-        console.log(response.data);
+        return response.data
         })
         .catch(function (error) {
         this.error = true
