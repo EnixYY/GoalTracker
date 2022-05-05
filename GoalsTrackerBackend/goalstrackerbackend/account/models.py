@@ -40,7 +40,7 @@ class AccountManager(BaseUserManager):
 
 
 class Account(AbstractBaseUser):
-    email = models.EmailField(verbose_name='email', max_length=60, unique=True)
+    email = models.EmailField(verbose_name='email', max_length=60, unique=True, null=False)
     name = models.CharField(max_length=30)
     password = models.CharField(max_length=250)
     role = models.ForeignKey('restful_apis.Role', on_delete=models.DO_NOTHING, null=True)
