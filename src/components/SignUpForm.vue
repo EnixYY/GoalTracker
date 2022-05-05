@@ -29,6 +29,10 @@
             <input type="password" v-model="password">
         </div>
         <div class="individual">
+            <label>Confirm Password</label>
+            <input type="password" v-model="confirmPassword">
+        </div>
+        <div class="individual">
             <label v-if="errorChecker">Please create again as there is an error while creating</label>
         </div>
         <div class="individual">
@@ -49,6 +53,7 @@ export default {
             role:"",
             department:"",
             password:"",
+            confirmPassword:"",
         }
     },
     methods:{
@@ -60,6 +65,7 @@ export default {
             this.role, 
             this.department, 
             this.password, 
+            this.confirmPassword,
         )
     }
     }
@@ -73,7 +79,7 @@ export default {
     width: 100vw;
     background-color: turquoise;
     width: 70vw;
-    height: 40vh;
+    height: 50vh;
     justify-content: center;
     border-radius: 10px;
     margin-left: 115px;

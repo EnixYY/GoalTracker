@@ -31,7 +31,7 @@ data(){
     }
 },
 methods:{
-    signUp(name, email, role, department, password){
+    signUp(name, email, role, department, password, confirmPassword){
         if(name === ""){
             this.error = true
             this.errorMessage = "Please fill in the name."
@@ -47,6 +47,9 @@ methods:{
         }else if(password === ""){
             this.error = true
             this.errorMessage = "Please fill in the password."    
+        }else if(password !== confirmPassword){
+            this.error = true
+            this.errorMessage = "Please ensure that password and confirm password matches."
         }else{
             this.error = false
         const newSignUp = {
