@@ -4,7 +4,10 @@
 </div>
 <div id="mainHolder">
   <h1>Goäl Träcker</h1>
-    <NewLoginForm @login-fn="loginFn"/> 
+    <NewLoginForm @login-fn="loginFn"/>
+    <div v-if="isError" id="error">
+        <label>Please input the correct email or password!</label>
+    </div> 
 </div>
 </template>
 
@@ -23,10 +26,12 @@ export default {
 data(){
     return{
         loginData:[],
+        isError: false,
     }
 },
 methods:{
     loginFn(email, password){
+        const that = this
         const login = {
             email: email,
             password: password,
@@ -48,9 +53,11 @@ methods:{
         console.log(response.data.access);
         localStorage.accessToken = response.data.access;
         localStorage.email = email
+        that.isError = false
         router.push({name: 'home'})
         })
         .catch(function (error) {
+        that.isError = true
         console.log(error);
         });
     }
@@ -63,6 +70,16 @@ methods:{
   display: flex;
   flex-direction: column;
   margin-top: 60px;
-
+}
+#error{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    background-color: salmon;
+    width: 60vw;
+    height: 10vh;
+    justify-content: center;
+    border-radius: 10px;
+    margin-left: 150px;
 }
 </style>
