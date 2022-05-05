@@ -3,11 +3,7 @@
         <h4>{{goalTitle}}</h4>
         <h4>{{userInputLabel}}/{{fullValue}}</h4>
         <h4>Due on {{dueDate}}</h4>
-        <button @click="setIdEdit" v-if="isManager === false && isEdit === false">Edit</button>
-        <form v-if="isManager === false && isEdit" @submit.prevent="updateUserNewInput">
-        <input v-model="userNewInput"/>
-        <button>Add Progress</button>
-        </form>
+        <h4>ARCHIVED!</h4>
     </div>
 </template>
 
@@ -15,7 +11,7 @@
 import axios from "axios"
 
 export default {
-    name:"GoalsCard",
+    name:"ArchivedGoalsCard",
     data(){
         return{
             isEdit: false,
@@ -70,7 +66,7 @@ export default {
 
 <style>
 .goalcard {
-        background-color: turquoise;
+        background-color: salmon;
         justify-content: center;
         border: 1px solid black;
         border-radius: 10px;

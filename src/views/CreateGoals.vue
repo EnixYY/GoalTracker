@@ -55,7 +55,7 @@ methods:{
             "allocation_type": allocation
             });
             that.departmentGoalNameForProgressUpdate = goal
-
+            
             const config = {
             method: 'put',
             url: 'http://127.0.0.1:8000/api/create-department-goals/',
@@ -74,7 +74,8 @@ methods:{
                     "individualValue": Math.ceil(individualAmount),
                     "departmentGoalsId": response.data.id,
                     "userId": that.userDetailsForEmployeeInDepartment[0][i].id,
-                    "departmentGoalName": that.departmentGoalNameForProgressUpdate
+                    "departmentGoalName": that.departmentGoalNameForProgressUpdate,
+                    "endDate": endDate,
                     });
                     const config = {
                     method: 'put',

@@ -5,7 +5,8 @@
     <router-link class="routerLink" to="/home">Home</router-link>
     <router-link class="routerLink" to="/assignedgoals" v-if="isManager === false">Assigned Goals</router-link>
     <router-link class="routerLink" to="/creategoals" v-if="isManager">Create Goals</router-link>
-    <router-link class="routerLink" to="/archivedgoals">Archived Goals</router-link>
+    <router-link class="routerLink" to="/archivedgoals" v-if="isManager === false">Archived Goals</router-link>
+    <router-link class="routerLink" to="/creategoals" v-if="isManager">Department Archives</router-link>
     <router-link @click="clearLocalstorage" class="routerLink" to="/logout">Logout</router-link>
   </div>
 </template>
