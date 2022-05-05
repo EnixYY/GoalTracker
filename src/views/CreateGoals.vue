@@ -52,7 +52,8 @@ methods:{
             "department": this.userDepartment,
             "endDate": endDate,
             "number_of_employee": this.numberOfEmployeeInDepartment,
-            "allocation_type": allocation
+            "allocation_type": allocation,
+            "totalUserContribution": 0,
             });
             that.departmentGoalNameForProgressUpdate = goal
             

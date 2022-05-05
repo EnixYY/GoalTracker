@@ -7,6 +7,7 @@ import LandingPage from "@/views/LandingPage.vue";
 import LoginPage from "@/views/LoginPage.vue";
 import CreateGoals from "@/views/CreateGoals.vue";
 import ManagerViewAllDepartmentGoals from "@/views/ManagerViewAllDepartmentGoals.vue";
+import ManagerArchivedGoals from "@/views/ManagerArchivedGoals.vue";
 
 const routes = [
     {
@@ -54,6 +55,11 @@ const routes = [
         path: "/managerViewAllDepartmentGoals",
         name: "managerViewAllDepartmentGoals",
         component: ManagerViewAllDepartmentGoals,
+    },
+    {
+        path: "/managerArchivedGoals",
+        name: "managerArchivedGoals",
+        component: ManagerArchivedGoals,
     },
     {
         path: "/logout",

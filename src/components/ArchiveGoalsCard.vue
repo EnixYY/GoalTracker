@@ -64,7 +64,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .goalcard {
         background-color: salmon;
         justify-content: center;
