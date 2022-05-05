@@ -5,7 +5,7 @@
     <div id="mainHolder">
         <h1>Goäl Träcker</h1>
             <SignUpForm @sign-up="signUp"/>
-            <div v-if="error" id="error">
+    <div v-if="error" id="error">
         <label>{{errorMessage}}</label>
     </div> 
     </div>

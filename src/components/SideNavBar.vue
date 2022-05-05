@@ -42,6 +42,7 @@ export default {
   align-items: center;
   color: black;
   top: 0;
+  position: fixed;
 }
 img{
   width: 150px;

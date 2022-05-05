@@ -199,7 +199,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 #HomePageHolder {
     display: flex;
     background-color: white;
@@ -208,5 +208,6 @@ export default {
     display: flex;
     flex-direction: column;
     padding: 18px;
+    padding-left: 27vw
 }
 </style>

@@ -113,5 +113,6 @@ export default {
     flex-wrap: wrap;
     height: 100vh;
     width: 75vw;
+    padding-left: 25vw
 }
 </style>

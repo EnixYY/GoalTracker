@@ -4,7 +4,10 @@
         <SideNavBar :is-manager="isManager" :user-name="userName"/>
         </div>
     <div id="mainHolder">
-            <CreateGoalForm @create-goal="createGoal" :user-details="userDetailsForEmployeeInDepartment[0]"/> 
+            <CreateGoalForm @create-goal="createGoal" :user-details="userDetailsForEmployeeInDepartment[0]"/>
+    <div v-if="error" id="error">
+        <label>{{errorMessage}}</label>
+    </div>  
     </div>
 </div>
 </template>
@@ -32,6 +35,8 @@ data(){
         numberOfEmployeeInDepartment:"",
         userDetailsForEmployeeInDepartment:[],
         departmentGoalNameForProgressUpdate:"",
+        error: false,
+        errorMessage: "",
     }
 },
 created(){
@@ -45,6 +50,19 @@ methods:{
         }
         },
     createGoal(goal, endDate, value, allocation, percentage, isAssigned){
+        if(goal === ""){
+            this.error = true
+            this.errorMessage = "Please fill in the Goal."
+        }else if(endDate === ""){
+            this.error = true
+            this.errorMessage = "Please select a End Date."
+        }else if(value === ""){
+            this.error = true
+            this.errorMessage = "Please fill in the Value."
+        }else if(allocation === ""){
+            this.error = true
+            this.errorMessage = "Please select the Allocation Type."
+        }else{
         const that = this;
         console.log(isAssigned)
         const data = JSON.stringify({
@@ -131,6 +149,7 @@ methods:{
             .catch(function (error) {
             console.log(error);
             });
+        }
     },
     decodeToken(){
         const that = this;
@@ -191,5 +210,18 @@ methods:{
     display: flex;
     background-color: white;
 }
-
+#mainHolder{
+    padding-left: 25vw
+}
+#error{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    background-color: salmon;
+    width: 66vw;
+    height: 10vh;
+    justify-content: center;
+    border-radius: 10px;
+    margin-left: 35px;
+}
 </style>
