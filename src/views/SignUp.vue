@@ -4,7 +4,10 @@
         </div>
     <div id="mainHolder">
         <h1>Goäl Träcker</h1>
-            <SignUpForm @sign-up="signUp" :errorChecker="error"/> 
+            <SignUpForm @sign-up="signUp"/>
+            <div v-if="error" id="error">
+        <label>{{errorMessage}}</label>
+    </div> 
     </div>
 </template>
 
@@ -24,10 +27,28 @@ data(){
     return{
         signUpData:[],
         error: false,
+        errorMessage: "",
     }
 },
 methods:{
     signUp(name, email, role, department, password){
+        if(name === ""){
+            this.error = true
+            this.errorMessage = "Please fill in the name."
+        }else if(email === ""){
+            this.error = true
+            this.errorMessage = "Please fill in the email."
+        }else if(role === ""){
+            this.error = true
+            this.errorMessage = "Please select a role."
+        }else if(department === ""){
+            this.error = true
+            this.errorMessage = "Please select a department."    
+        }else if(password === ""){
+            this.error = true
+            this.errorMessage = "Please fill in the password."    
+        }else{
+            this.error = false
         const newSignUp = {
             // id: name,
             name: name,
@@ -64,6 +85,7 @@ methods:{
         console.log(error);
         });
     }
+    }
 }
 }
 </script>
@@ -73,5 +95,16 @@ methods:{
   display: flex;
   flex-direction: column;
   margin-top: 60px;
+}
+#error{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    background-color: salmon;
+    width: 70vw;
+    height: 10vh;
+    justify-content: center;
+    border-radius: 10px;
+    margin-left: 115px;
 }
 </style>
