@@ -30,7 +30,7 @@ class DepartmentGoals(models.Model):
     endDate = models.DateField(null=True)
     number_of_employee = models.SmallIntegerField(null=True)
     allocation_type = models.ForeignKey(AllocationType, on_delete=models.DO_NOTHING)
-    totalUserContribution = models.IntegerField(null=True)
+    totalUserContribution = models.IntegerField(default=0)
 
 
     def __str__(self):

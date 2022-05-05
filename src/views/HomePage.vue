@@ -121,15 +121,18 @@ export default {
 
                 axios(config)
                 .then(function (response) {
+                    console.log(that.departmentGoalsData[0][i].id, response.data)
                 if(response.data.length !== 0){
+                    console.log(response.data)
                         const totalValueOfUser = response.data.reduce((previous, current)=>{
-                            return previous.employeeInput + current.employeeInput
-                        }
-                    )
+                                                console.log(typeof previous, typeof current.employeeInput)
+                            return parseInt(previous) + parseInt(current.employeeInput)
+                        }, 0)
+                                        console.log(that.departmentGoalsData[0][i].id, response.data)
                 const data = JSON.stringify({
                     "totalUserContribution": totalValueOfUser  
                 });
-
+                console.log(that.departmentGoalsData[0][i].id, totalValueOfUser)
                 const config = {
                 method: 'patch',
                 url: `http://127.0.0.1:8000/api/update-user-input/${that.departmentGoalsData[0][i].id}/`,
