@@ -94,7 +94,11 @@ export default {
 
             axios(config)
             .then(function (response) {
-            that.departmentGoalsData.push(response.data)
+            const timeNow = new Date().getTime()
+            const DepartmentGoalsData = response.data
+            const filteredData = DepartmentGoalsData.filter((goal)=> { 
+            return new Date(goal.endDate).getTime() >= timeNow})
+            that.departmentGoalsData.push(filteredData)
             console.log(that.departmentGoalsData[0]);
             })
             .catch(function (error) {

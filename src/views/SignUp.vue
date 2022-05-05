@@ -36,15 +36,13 @@ methods:{
             department: department,
             password: password,
         }
-        this.signUpData.push(newSignUp);
-        console.log(this.signUpData)
 
         const data = {
-        "email": this.signUpData[0].email,
-        "name": this.signUpData[0].name,
-        "role": this.signUpData[0].role,
-        "department": this.signUpData[0].department,
-        "password": this.signUpData[0].password,
+        "email": newSignUp.email,
+        "name": newSignUp.name,
+        "role": newSignUp.role,
+        "department": newSignUp.department,
+        "password": newSignUp.password,
         };
 
         var config = {

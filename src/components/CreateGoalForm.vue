@@ -94,7 +94,8 @@ button{
     color: black;
 }
 button:hover{
-    color: turquoise;
+    color: white;
+    background-color: turquoise;
 }
 label{
     font-weight: bold;

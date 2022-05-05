@@ -87,8 +87,11 @@ export default {
 
                 axios(config)
                 .then(function (response) {
-                that.employeeProgressData.push(response.data)
-                console.log(that.employeeProgressData[0]);
+                const timeNow = new Date().getTime()
+                const progressData = response.data
+                const filteredData = progressData.filter((progress)=> { 
+                return new Date(progress.endDate).getTime() >= timeNow})
+                that.employeeProgressData.push(filteredData)
                 })
                 .catch(function (error) {
                 console.log(error);

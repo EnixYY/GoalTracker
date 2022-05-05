@@ -69,7 +69,11 @@ export default {
 
             axios(config)
             .then(function (response) {
-            that.departmentGoalsData.push(response.data)
+            const timeNow = new Date().getTime()
+            const DepartmentGoalsDataRaw = response.data
+            const filteredData = DepartmentGoalsDataRaw.filter((goal)=> { 
+            return new Date(goal.endDate).getTime() >= timeNow})
+            that.departmentGoalsData.push(filteredData)
             console.log(that.departmentGoalsData[0]);
             that.getDepartmentContributedValue()
             })
@@ -179,8 +183,12 @@ export default {
                 };
 
                 axios(config)
-                .then(function (response) {
-                that.employeeProgressData.push(response.data)
+                .then(function (response) {                
+                const timeNow = new Date().getTime()
+                const progressData = response.data
+                const filteredData = progressData.filter((progress)=> { 
+                return new Date(progress.endDate).getTime() >= timeNow})
+                that.employeeProgressData.push(filteredData)
                 console.log(that.employeeProgressData[0]);
                 })
                 .catch(function (error) {
